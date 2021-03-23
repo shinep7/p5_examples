@@ -1,0 +1,57 @@
+/*
+ * menu.scss
+ */
+
+
+@import "default_colors";
+
+$blue0: #072f5f;
+$blue1: #1261a0;
+$blue2: #3895d3;
+$blue3: #58cced;
+
+$green0: #132519;
+$green1: #355935;
+$green2: #5d8c55;
+$green3: #73a767;
+$green4: #93be89;
+
+
+.links a {
+    color: white;
+    width: 12em;
+    height: 1.5em;
+    display: inline-block;
+    border-style: solid;
+    border-color: $dove-grey;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px 0;
+    overflow: hidden;
+}
+
+.links a:hover {
+    border-color: $silver-chalice;
+}
+
+.links.group0  a {
+    background-color: $green0;
+}
+
+.links.group1  a {
+    background-color: $green1;
+}
+
+.links.group2  a {
+    background-color: $green2;
+}
+
+.links.group3  a {
+    background-color: $green3;
+}
+
+.links a.selected {
+    border-color: white;
+}
+
+

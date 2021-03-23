@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/style.css?v=9c63d4784f7cb4ae97820921ece697717274ccff">
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>second page | p5 examples</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="second page" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="p5 examples" />
+<meta property="og:description" content="p5 examples" />
+<link rel="canonical" href="http://localhost:4000/second.html" />
+<meta property="og:url" content="http://localhost:4000/second.html" />
+<meta property="og:site_name" content="p5 examples" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="second page" />
+<script type="application/ld+json">
+{"headline":"second page","@type":"WebPage","url":"http://localhost:4000/second.html","description":"p5 examples","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <script src="p5/p5.js"></script>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <a id="a-title" href="/">
+          <h1>p5 examples</h1>
+        </a>
+        <h2>p5 examples</h2>
+        
+        <div id="menu">
+  <div class="links group1">
+
+    <a href="http://localhost:4000/index.html" >
+      Home</a>
+
+    <a href="http://localhost:4000/second.html" class="selected" >
+      Second</a>
+
+  </div>
+
+  <div class="links group2">
+  </div>
+
+  <div class="links group3">
+  </div>
+
+</div>
+
+
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1 id="second-page">second page</h1>
+
+<p>The quick brown fox jumps over the lazy dog.
+The quick brown fox jumps over the lazy dog.</p>
+
+<div id="preview"></div>
+
+<script src="sketch2.js"></script>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nx">createCanvas</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// put drawing code here</span>
+  <span class="nx">background</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="nx">fill</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="nx">ellipse</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>
+
+  <span class="nx">x</span><span class="o">++</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">&gt;</span> <span class="nx">width</span><span class="o">+</span><span class="mi">50</span><span class="p">)</span> <span class="nx">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">50</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+
+      </section>
+    </div>
+
+    
+
+    <script src="index.js"></script>
+
+  </body>
+</html>
