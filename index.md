@@ -1,13 +1,13 @@
-# p5 examples
+# Hello, World!
 
-The quick brown fox jumps over the lazy dog.
+Hello, World!
 
 <div id="preview"></div>
 
-<script src="sketch.js"></script>
+<script src="hello.js"></script>
 
 ```javascript
-{% include_relative sketch.js %}
+{% include_relative hello.js %}
 ```
 
 
