@@ -12,11 +12,9 @@ Javascript ```class``` and array of objects.
 
 [bounce.js](bounce.js)
 ```javascript
-{% include_relative bounce.js %}
-```
+{% include_relative bounce.js %} ```
 
 [Ball.js](Ball.js)
 ```javascript
-{% include_relative Ball.js %}
-```
+{% include_relative Ball.js %} ```
 

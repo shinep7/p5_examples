@@ -12,8 +12,7 @@ Hello, World!
 [hello.js](hello.js)
 
 ```javascript
-{% include_relative hello.js %}
-```
+{% include_relative hello.js %}```
 
 HTML
 ```html

@@ -20,5 +20,3 @@ function draw() {
 function mousePressed() {
   balls.push(new Ball(mouseX, mouseY));
 }
-
-
