@@ -5,7 +5,6 @@
 
 ## TODO
 
-- folder organization / multiple .js files
 - images
 - noise
 - sound
