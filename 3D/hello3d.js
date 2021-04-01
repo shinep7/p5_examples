@@ -1,3 +1,8 @@
+let doTexture = false;
+
+function preload() {
+    img = loadImage('fur.jpg');
+}
 
 function setup() { 
   createCanvas(400, 400, WEBGL);
@@ -8,7 +13,12 @@ function setup() {
 } 
 
 function draw(){
-  background(64);
-  lights();
-  box(200);
+    background(64);
+    lights();
+    texture(doTexture ? img : 0);
+    box(200);
+}
+
+function keyPressed(){
+    doTexture = !doTexture;
 }

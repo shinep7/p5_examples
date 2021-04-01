@@ -3,6 +3,15 @@
 
 # 3D
 
+3D (+ textures) example using EasyCam.
+
+### EasyCam controls
+
+* rotate: left-click drag
+* pan: middle-click / 2-finger drag
+* zoom: right-click / spread drag
+* reset: double-click
+
 <center>
 <main></main>
 </center>

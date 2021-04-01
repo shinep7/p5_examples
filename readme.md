@@ -6,7 +6,6 @@
 ## TODO
 
 - 3D 
-    - textures
     - surfaces
     - noise
 - sound
