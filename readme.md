@@ -5,14 +5,11 @@
 
 ## TODO
 
-- images
-- noise
+- 3D 
+    - textures
+    - surfaces
+    - noise
 - sound
     - level
     - FFT
-- 3D 
-    - PeasyCam
-    - surfaces
-    - textures
-
 
