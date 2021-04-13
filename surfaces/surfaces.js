@@ -4,6 +4,15 @@ let rangeMax;
 let gridCount = 3;
 let gridSize;
 
+let xFunction;
+let yFunction;
+let zFunction;
+let uRange;
+let vRange;
+
+let gridRange = {min:-gridCount, max:gridCount};
+let circleRange = {min:0, max:2*Math.PI};
+
 
 function setup() 
 { 
@@ -12,8 +21,16 @@ function setup()
     createEasyCam();
     document.oncontextmenu = function() { return false; }
 
-    rangeMax = width/2;
+    rangeMax = width/2.;
     gridSize = rangeMax/gridCount;
+
+    console.log("rangeMax:" + rangeMax);
+
+    xFunction = projectU;
+    yFunction = projectV;
+    zFunction = hyperbolicParaboloid;
+    uRange = gridRange;
+    vRange = gridRange;
 } 
 
 function draw(){
@@ -22,7 +39,7 @@ function draw(){
     initialTransformation();
     drawXYplane();
     drawAxes();
-    drawSurface();
+    drawSurface(zFunction);
 }
 
 
@@ -56,7 +73,7 @@ function drawAxes()
 
 function drawXYplane()
 {
-    stroke(200, 100);
+    stroke(200, 200);
     for (let i=-gridCount; i<=gridCount; i++)
     {
         if (i==0) continue;
@@ -73,7 +90,21 @@ function drawXYplane()
 }
 
 
-function f(x,y) {return .1*(x*x - y*y);}
+function hyperbolicParaboloid(x,y) {return (x*x - y*y);}
+
+function ellipticParaboloid(x,y) {return (x*x + y*y);}
+
+function projectU(u, v) {return u;}
+function projectV(u, v) {return v;}
+
+const torusA = 3;
+const torusB = 1;
+
+function torusX(u,v) {return (torusA + torusB*Math.cos(v))*Math.cos(u);}
+function torusY(u,v) {return (torusA + torusB*Math.cos(v))*Math.sin(u);}
+function torusZ(u,v) {return torusB*Math.sin(v);}
+
+function indexIntoRange(i, n, range) { return range.min + i*(range.max-range.min)/n; }
 
 
 function drawSurface()
@@ -84,37 +115,58 @@ function drawSurface()
 
     let sampleCount = 40;
 
-    for (let x=-sampleCount; x<=sampleCount; x++)
+    for (let i=0; i<=sampleCount; i++)
     {
-        let xActual = rangeMax*x/sampleCount;
+        let u = indexIntoRange(i, sampleCount, uRange);
 
         beginShape();
-        for (let y=-sampleCount; y<=sampleCount; y++)
+        for (let j=0; j<=sampleCount; j++)
         {
-            let yActual = rangeMax*y/sampleCount;
-            let z = f(x,y);
-            let zActual = rangeMax*z/sampleCount;
-            vertex(xActual, yActual, zActual);
+            let v = indexIntoRange(j, sampleCount, vRange);
+            vertex(xFunction(u,v)*gridSize, yFunction(u,v)*gridSize, zFunction(u,v)*gridSize);
         }
         endShape();
     }
 
-    for (let y=-sampleCount; y<=sampleCount; y++)
+    for (let i=0; i<=sampleCount; i++)
     {
-        let yActual = rangeMax*y/sampleCount;
+        let v = indexIntoRange(i, sampleCount, vRange);
 
         beginShape();
-        for (let x=-sampleCount; x<=sampleCount; x++)
+        for (let j=0; j<=sampleCount; j++)
         {
-            let xActual = rangeMax*x/sampleCount;
-            let z = f(x,y);
-            let zActual = rangeMax*z/sampleCount;
-            vertex(xActual, yActual, zActual);
+            let u = indexIntoRange(j, sampleCount, uRange);
+            vertex(xFunction(u,v)*gridSize, yFunction(u,v)*gridSize, zFunction(u,v)*gridSize);
         }
         endShape();
     }
+}
 
 
+function keyPressed()
+{
+    if (key == 'h')
+    {
+        xFunction = projectU;
+        yFunction = projectV;
+        zFunction = hyperbolicParaboloid;
+        uRange = vRange = gridRange;
+    }
+    else if (key == 'e')
+    {
+        xFunction = projectU;
+        yFunction = projectV;
+        zFunction = ellipticParaboloid;
+        uRange = vRange = gridRange;
+    }
+    else if (key == 't')
+    {
+        xFunction = torusX;
+        yFunction = torusY;
+        zFunction = torusZ;
+        uRange = circleRange;
+        vRange = circleRange;
+    }
 }
 
 
