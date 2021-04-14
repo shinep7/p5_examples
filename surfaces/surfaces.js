@@ -1,7 +1,7 @@
 
 
 let rangeMax;
-let gridCount = 3;
+let gridCount = 5;
 let gridSize;
 
 let xFunction;
@@ -16,12 +16,14 @@ let circleRange = {min:0, max:2*Math.PI};
 
 function setup() 
 { 
-    createCanvas(600, 600, WEBGL);
+    createCanvas(800, 800, WEBGL);
 
-    createEasyCam();
+    let cam = createEasyCam();
+    cam.rotateY(PI/12);
+    cam.rotateX(PI/6);
     document.oncontextmenu = function() { return false; }
 
-    rangeMax = width/2.;
+    rangeMax = width/6.;
     gridSize = rangeMax/gridCount;
 
     console.log("rangeMax:" + rangeMax);
@@ -97,7 +99,7 @@ function ellipticParaboloid(x,y) {return (x*x + y*y);}
 function projectU(u, v) {return u;}
 function projectV(u, v) {return v;}
 
-const torusA = 3;
+const torusA = 4;
 const torusB = 1;
 
 function torusX(u,v) {return (torusA + torusB*Math.cos(v))*Math.cos(u);}

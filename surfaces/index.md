@@ -5,6 +5,10 @@
 
 Another 3D example using EasyCam.
 
+<center>
+<main></main>
+</center>
+
 ### EasyCam controls
 
 * rotate: left-click drag
@@ -12,9 +16,6 @@ Another 3D example using EasyCam.
 * zoom: right-click / spread drag
 * reset: double-click
 
-<center>
-<main></main>
-</center>
 
 [surfaces.js](surfaces.js)
 
