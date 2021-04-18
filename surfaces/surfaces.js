@@ -117,11 +117,11 @@ function drawLineSegments(sampleCount, range, uFunction, vFunction, xFunction, y
     for (let j=0; j<=sampleCount; j++)
     {
         let t = parameter(j);
-
-        let x = xFunction(uFunction(t),vFunction(t))*gridSize;
-        let y = yFunction(uFunction(t),vFunction(t))*gridSize;
-        let z = zFunction(uFunction(t),vFunction(t))*gridSize;
-
+        let u = uFunction(t);
+        let v = vFunction(t);
+        let x = xFunction(u, v)*gridSize;
+        let y = yFunction(u, v)*gridSize;
+        let z = zFunction(u, v)*gridSize;
         vertex(x, y, z);
     }
     endShape();
@@ -142,7 +142,7 @@ function drawSurface()
         let uFunction = t => u; // const
         let vFunction = t => t; // identity
 
-        drawLineSegments(sampleCount, uRange, 
+        drawLineSegments(sampleCount, vRange, 
                          uFunction, vFunction, 
                          xFunction, yFunction, zFunction);
     }
