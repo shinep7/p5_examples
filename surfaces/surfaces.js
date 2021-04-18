@@ -109,6 +109,25 @@ function torusZ(u,v) {return torusB*Math.sin(v);}
 function indexIntoRange(i, n, range) { return range.min + i*(range.max-range.min)/n; }
 
 
+function drawLineSegments(sampleCount, range, uFunction, vFunction, xFunction, yFunction, zFunction)
+{
+    let parameter = j => indexIntoRange(j, sampleCount, range);
+
+    beginShape();
+    for (let j=0; j<=sampleCount; j++)
+    {
+        let t = parameter(j);
+
+        let x = xFunction(uFunction(t),vFunction(t))*gridSize;
+        let y = yFunction(uFunction(t),vFunction(t))*gridSize;
+        let z = zFunction(uFunction(t),vFunction(t))*gridSize;
+
+        vertex(x, y, z);
+    }
+    endShape();
+}
+
+
 function drawSurface()
 {
     stroke(0, 0, 255);
@@ -120,27 +139,23 @@ function drawSurface()
     for (let i=0; i<=sampleCount; i++)
     {
         let u = indexIntoRange(i, sampleCount, uRange);
+        let uFunction = t => u; // const
+        let vFunction = t => t; // identity
 
-        beginShape();
-        for (let j=0; j<=sampleCount; j++)
-        {
-            let v = indexIntoRange(j, sampleCount, vRange);
-            vertex(xFunction(u,v)*gridSize, yFunction(u,v)*gridSize, zFunction(u,v)*gridSize);
-        }
-        endShape();
+        drawLineSegments(sampleCount, uRange, 
+                         uFunction, vFunction, 
+                         xFunction, yFunction, zFunction);
     }
 
     for (let i=0; i<=sampleCount; i++)
     {
         let v = indexIntoRange(i, sampleCount, vRange);
+        let vFunction = t => v; // const
+        let uFunction = t => t; // identity
 
-        beginShape();
-        for (let j=0; j<=sampleCount; j++)
-        {
-            let u = indexIntoRange(j, sampleCount, uRange);
-            vertex(xFunction(u,v)*gridSize, yFunction(u,v)*gridSize, zFunction(u,v)*gridSize);
-        }
-        endShape();
+        drawLineSegments(sampleCount, uRange, 
+                         uFunction, vFunction, 
+                         xFunction, yFunction, zFunction);
     }
 }
 
