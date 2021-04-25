@@ -6,12 +6,21 @@
             b {color: blue;}
             p {font-style: italic;}
         </style>
+        <script>
+            function myFunction() {window.alert("Hello, world!");}
+        </script>
+        <!-- or use external files:
+            <link href="main.css" rel="stylesheet">
+            <script src="main.js"></script>
+        -->
     </head>
 
     <body>
+
         <b>
         The quick brown fox jumps over the lazy dog.
         </b>
+
         <p>
         The quick brown fox jumps over the lazy dog.
         The quick brown fox jumps over the lazy dog.
@@ -19,6 +28,8 @@
         The quick brown fox jumps over the lazy dog.
         The quick brown fox jumps over the lazy dog.
         </p>
+
+        <button onclick="myFunction()">Click me!</button>
     </body>
 
 </html>
