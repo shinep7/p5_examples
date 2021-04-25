@@ -1,6 +1,9 @@
 <div id="menu">
   <div class="links group1">
 
+    <a href="{{ site.url }}/hello_html" {% if page.dir == "/hello_html/" %}class="selected" {% endif %}>
+      Hello, HTML!</a>
+
     <a href="{{ site.url }}/hello" {% if page.dir == "/hello/" %}class="selected" {% endif %}>
       Hello, World!</a>
 
