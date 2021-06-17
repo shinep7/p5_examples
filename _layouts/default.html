@@ -10,6 +10,7 @@
     {% include p5.html %}
     {% include p5_easycam.html %}
 
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
 
   <body>
@@ -45,6 +46,18 @@
     {% endif %}
 
     <script src="{{ site.url}}/index.js"></script>
+
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
 
   </body>
 </html>
