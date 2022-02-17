@@ -93,9 +93,9 @@ function draw()
     noStroke();
     rect(0, 0, 150, 100);
     fill(255);
-    text("v: show video", 25, 25);
+    text("s: show shapes", 25, 25);
     text("p: show points", 25, 50);
-    text("s: show shapes", 25, 75);
+    text("v: show video", 25, 75);
 }
 
 
@@ -150,6 +150,29 @@ function keyPressed()
 
     if (key == 's')
         showShapes = !showShapes;
+}
+
+
+function mousePressed()
+{
+    if (showShapes === true)
+    {
+        showShapes = false;
+        showPoints = true;
+        showVideo = false;
+    }
+    else if (showPoints)
+    {
+        showShapes= false;
+        showPoints = false;
+        showVideo = true;
+    }
+    else if (showVideo)
+    {
+        showShapes = true;
+        showPoints = false;
+        showVideo = false;
+    }
 }
 
 
