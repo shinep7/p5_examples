@@ -73,12 +73,25 @@ function drawPoly(positions, begin, end)
 }
 
 
+function drawText()
+{
+    fill(0);
+    noStroke();
+    rect(0, 0, 150, 100);
+    fill(255);
+    text("s: show shapes", 25, 25);
+    text("p: show points", 25, 50);
+    text("v: show video", 25, 75);
+}
+
 function draw() 
 {
     background(0);
 
     if (showVideo)
         image(capture, 0, 0, w, h);
+
+    drawText();
 
     let positions = tracker.getCurrentPosition();
     if (!positions || positions.length === 0) return;
@@ -88,14 +101,6 @@ function draw()
 
     if (showShapes)
         drawShapes(positions);
-
-    fill(0);
-    noStroke();
-    rect(0, 0, 150, 100);
-    fill(255);
-    text("s: show shapes", 25, 25);
-    text("p: show points", 25, 50);
-    text("v: show video", 25, 75);
 }
 
 
