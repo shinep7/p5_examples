@@ -11,6 +11,8 @@ PoseNet example using p5.js
 let video;
 let poseNet;
 let poses = [];
+let xcircle = random(width);
+let ycircle = random(height);
 
 function setup() {
   createCanvas(640, 480);
@@ -87,9 +89,9 @@ function drawSkeleton() {
 
 function drawCircles(){
   noStroke();
-  for(let k = 0; k < width; k++){
+  for(let k = 0; k < width/10; k++){
     colorMode(RGB, (k+255));
-    fill(millis()%((k+10) * width * 5));
-    ellipse(random(k*width), random(k*height), 50, 50);
+    fill(millis()%((k+10) * width/10 * 5));
+    ellipse(random(k*(width/10), random(k*height), 50, 50);
   }
 }
