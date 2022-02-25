@@ -86,8 +86,13 @@ function drawSkeleton() {
 
 
 function drawCircles(){
-  fill(0, 0, 255);
-  delayTime(10);
-  ellipse(random(width), random(height), 25, 25);
+  if(millis() > start + change){
+    start = millis();
+    next = true;
+  }
 
+  if(next){
+    fill(0, 0, 255);
+    ellipse(random(width), random(height), 50, 50);
+  }
 }
