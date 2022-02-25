@@ -11,15 +11,11 @@ PoseNet example using p5.js
 let video;
 let poseNet;
 let poses = [];
-let next = false;
-let start;
 
 function setup() {
   createCanvas(640, 480);
   video = createCapture(VIDEO);
   video.size(width, height);
-
-  start = millis();
 
   // Create a new poseNet method with a single detection
   poseNet = ml5.poseNet(video, modelReady);
@@ -52,7 +48,6 @@ function draw() {
   drawKeypoints();
   drawSkeleton();
   drawCircles();
-  timing();
 }
 
 // A function to draw ellipses over the detected keypoints
@@ -89,12 +84,6 @@ function drawSkeleton() {
   }
 }
 
-function timing(){
-  if(millis() > 10000){
-    start = millis(3000);
-    next = true;
-  }
-}
 
 function drawCircles(){
   for(let k = 0; k < width, k++){
