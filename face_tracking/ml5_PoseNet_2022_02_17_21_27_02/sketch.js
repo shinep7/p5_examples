@@ -46,6 +46,9 @@ function draw() {
 			line(0, y, width, y);
 		}
 	}
+
+  ellipse(xcircle, ycircle, 50, 50);
+  
   // We can call both functions to draw all keypoints and the skeletons
   drawKeypoints();
   drawSkeleton();
