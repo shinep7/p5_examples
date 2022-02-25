@@ -11,10 +11,8 @@ PoseNet example using p5.js
 let video;
 let poseNet;
 let poses = [];
-//let change = 3000;
 let next = false;
 let start;
-let dot1 = 0, dot2 = 0;
 
 function setup() {
   createCanvas(640, 480);
@@ -92,16 +90,13 @@ function drawSkeleton() {
 }
 
 function timing(){
-  if(millis() - start > 10000){
-    start = millis();
+  if(millis() > 10000){
+    start = millis(3000);
     next = true;
   }
 }
 
 function drawCircles(){
-  /*dot1++;
-  fill(0, 0, 255);
-  ellipse(random(width), random(height), 50, 50);*/
   if(next){
     fill(0, 0, 255);
     ellipse(random(width), random(height), 50, 50);
