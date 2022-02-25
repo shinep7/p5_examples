@@ -92,7 +92,7 @@ function drawSkeleton() {
 }
 
 function timing(){
-  if(millis() - start > 3000){
+  if(millis() - start < 10000){
     start = millis();
     next = true;
   }
