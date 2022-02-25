@@ -14,11 +14,14 @@ let poses = [];
 let change = 1000;
 let next = false;
 let start;
+let dot1 = 0, dot2 = 0;
 
 function setup() {
   createCanvas(640, 480);
   video = createCapture(VIDEO);
   video.size(width, height);
+
+  start = millis();
 
   // Create a new poseNet method with a single detection
   poseNet = ml5.poseNet(video, modelReady);
@@ -92,12 +95,18 @@ function timing(){
   if(millis() > start + change){
     start = millis();
     next = true;
+    dot2 = 0;
   }
 }
 
 function drawCircles(){
+  dot1++;
+  fill(0, 0, 255);
+  ellipse(random(width), random(height), 50, 50);
   if(next){
+    dot2++;
     fill(0, 0, 255);
     ellipse(random(width), random(height), 50, 50);
   }
+  timing();
 }
