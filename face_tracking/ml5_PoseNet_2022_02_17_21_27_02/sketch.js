@@ -91,4 +91,5 @@ function drawCircles(){
     fill(millis()%((k+1) * width * 10));
     ellipse(random(k*width), random(height), 50, 50);
   }
+  noStroke();
 }
