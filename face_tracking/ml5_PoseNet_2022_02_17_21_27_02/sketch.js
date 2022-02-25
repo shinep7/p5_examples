@@ -50,6 +50,8 @@ function draw() {
   drawKeypoints();
   drawSkeleton();
   drawCircles();
+
+  ellipse(xcircle, ycircle, 50, 50);
 }
 
 // A function to draw ellipses over the detected keypoints
@@ -89,9 +91,5 @@ function drawSkeleton() {
 
 function drawCircles(){
   noStroke();
-  for(let k = 0; k < width/10; k++){
-    colorMode(RGB, (k+255));
-    fill(millis()%((k+10) * width/10 * 5));
-    ellipse(random(k*(width/10), random(k*height), 50, 50);
-  }
+    //ellipse(random(k()), random(k*height), 50, 50);
 }
