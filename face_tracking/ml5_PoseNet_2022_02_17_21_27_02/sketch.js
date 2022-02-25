@@ -11,9 +11,10 @@ PoseNet example using p5.js
 let video;
 let poseNet;
 let poses = [];
+let fs = fullscreen();
 
 function setup() {
-  fullscreen();
+  fullscreen(!fs);
   video = createCapture(VIDEO);
   video.size(width, height);
 
