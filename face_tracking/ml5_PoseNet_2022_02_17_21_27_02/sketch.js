@@ -86,7 +86,7 @@ function drawSkeleton() {
 
 
 function drawCircles(){
-  for(let k = 0; k < width, k++){
+  for(let k = 0; k < width; k++){
     fill(millis()%((k+1) * width * 10));
     ellipse(random(width), random(height), 50, 50);
   }
