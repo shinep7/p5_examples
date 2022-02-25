@@ -11,7 +11,7 @@ PoseNet example using p5.js
 let video;
 let poseNet;
 let poses = [];
-let change = 1000000;
+let change = 10;
 let next = false;
 let start;
 let dot1 = 0, dot2 = 0;
@@ -21,7 +21,7 @@ function setup() {
   video = createCapture(VIDEO);
   video.size(width, height);
 
-  start = millis();
+  start = second();
 
   // Create a new poseNet method with a single detection
   poseNet = ml5.poseNet(video, modelReady);
@@ -92,8 +92,8 @@ function drawSkeleton() {
 }
 
 function timing(){
-  if(millis() > start + change){
-    start = millis();
+  if(second() > start + change){
+    start = second();
     next = true;
     dot2 = 0;
   }
