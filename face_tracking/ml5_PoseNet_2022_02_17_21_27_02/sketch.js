@@ -11,7 +11,7 @@ PoseNet example using p5.js
 let video;
 let poseNet;
 let poses = [];
-let change = 1000;
+let change = 5000;
 let next = false;
 let start;
 let dot1 = 0, dot2 = 0;
