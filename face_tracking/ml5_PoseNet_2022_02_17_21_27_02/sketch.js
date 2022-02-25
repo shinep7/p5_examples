@@ -97,9 +97,10 @@ function timing(){
 }
 
 function drawCircles(){
-  if(next){
-    fill(0, 0, 255);
-    ellipse(random(width), random(height), 50, 50);
+  for(let k = 0; k < width, k++){
+    colorMode(RGB, (k+1) * width * 10);
+    fill(millis()%((i+1) * width * 10));
+    ellipse(random(k), random(height), 50, 50);
+
   }
-  timing();
 }
