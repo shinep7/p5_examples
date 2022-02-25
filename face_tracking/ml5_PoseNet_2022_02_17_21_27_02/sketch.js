@@ -14,7 +14,7 @@ let poses = [];
 let fs = fullscreen();
 
 function setup() {
-  createCanvas(fs);
+  createCanvas(windowWidth, windowHeight);
   video = createCapture(VIDEO);
   video.size(width, height);
 
