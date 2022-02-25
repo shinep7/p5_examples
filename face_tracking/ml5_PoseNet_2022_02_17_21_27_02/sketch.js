@@ -47,6 +47,7 @@ function draw() {
   // We can call both functions to draw all keypoints and the skeletons
   drawKeypoints();
   drawSkeleton();
+  drawCircles();
 }
 
 // A function to draw ellipses over the detected keypoints
@@ -81,4 +82,10 @@ function drawSkeleton() {
       line(partA.position.x, partA.position.y, partB.position.x, partB.position.y);
     }
   }
+}
+
+
+function drawCircles(){
+  ellipse(random(width), random(height), 25, 25);
+
 }
