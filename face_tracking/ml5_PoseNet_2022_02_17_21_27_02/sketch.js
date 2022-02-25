@@ -103,7 +103,6 @@ function drawCircles(){
   fill(0, 0, 255);
   ellipse(random(width), random(height), 50, 50);*/
   if(next){
-    dot2++;
     fill(0, 0, 255);
     ellipse(random(width), random(height), 50, 50);
   }
