@@ -11,6 +11,9 @@ PoseNet example using p5.js
 let video;
 let poseNet;
 let poses = [];
+let change = 3000;
+let next = false;
+let start;
 
 function setup() {
   createCanvas(640, 480);
