@@ -11,12 +11,11 @@ PoseNet example using p5.js
 let video;
 let poseNet;
 let poses = [];
-let fs = fullscreen();
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(640, 480);
   video = createCapture(VIDEO);
-  video.size(windowWidth, windowHeight);
+  video.size(width, height);
 
   // Create a new poseNet method with a single detection
   poseNet = ml5.poseNet(video, modelReady);
@@ -35,7 +34,7 @@ function modelReady() {
 
 function draw() {
   background(0);
-  image(video, 0, 0, windowWidth, windowHeight);
+  image(video, 0, 0, width, height);
 
   // We can call both functions to draw all keypoints and the skeletons
   drawKeypoints();
