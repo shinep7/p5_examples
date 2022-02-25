@@ -13,7 +13,7 @@ let poseNet;
 let poses = [];
 
 function setup() {
-  createCanvas(fullScreen());
+  fullscreen();
   video = createCapture(VIDEO);
   video.size(width, height);
 
