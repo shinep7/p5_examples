@@ -86,8 +86,9 @@ function drawSkeleton() {
 
 
 function drawCircles(){
+  noStroke();
   for(let k = 0; k < width; k++){
-    colorMode(RGB, (k+255) * width * 10);
+    colorMode(RGB, (k+255));
     fill(millis()%((k+10) * width * 10));
     ellipse(random(k*width), random(k*height), 50, 50);
   }
