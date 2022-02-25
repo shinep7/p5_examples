@@ -51,6 +51,7 @@ function draw() {
   drawKeypoints();
   drawSkeleton();
   drawCircles();
+  timing();
 }
 
 // A function to draw ellipses over the detected keypoints
@@ -87,13 +88,14 @@ function drawSkeleton() {
   }
 }
 
-
-function drawCircles(){
+function timing(){
   if(millis() > start + change){
     start = millis();
     next = true;
   }
+}
 
+function drawCircles(){
   if(next){
     fill(0, 0, 255);
     ellipse(random(width), random(height), 50, 50);
