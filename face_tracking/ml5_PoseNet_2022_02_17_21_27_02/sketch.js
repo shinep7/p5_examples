@@ -95,7 +95,6 @@ function timing(){
   if(millis() - start > 3000){
     start = millis();
     next = true;
-    dot2 = 0;
   }
 }
 
