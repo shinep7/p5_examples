@@ -99,8 +99,9 @@ function drawCircles(){
 			strokeWeight(1);
 			line(x, 0, x, height);
 			line(0, y, width, y);
+      ellipse(xcircle, ycircle, 50, 50);
 		}
-    ellipse(xcircle, ycircle, 50, 50);
+
 	}
 
   //ellipse(random(k()), random(k*height), 50, 50);
