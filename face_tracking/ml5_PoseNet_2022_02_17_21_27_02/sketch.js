@@ -120,7 +120,7 @@ function drawGrid(){
 
 
 function drawHands(){
-  const hands = handsfree.data?.hands
+  const hands = handsfree.data.hands
 
   hands.landmarks.forEach((hand, handIndex) => {
     hand.forEach((landmark, landmarkIndex) => {
@@ -133,7 +133,6 @@ function drawHands(){
           default:
             fill(color(255, 255, 255))
         }
-
       }
       if(handIndex == 0 && landmarkIndex == 8){
         stroke(color(255, 255, 255));
