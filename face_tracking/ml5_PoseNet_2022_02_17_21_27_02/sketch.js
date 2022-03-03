@@ -138,23 +138,13 @@ function drawHands(){
       if(handIndex == 0 && landmarkIndex == 8){
         stroke(color(255, 255, 255));
         strokeWeight(5);
-        circleSize = 40;
+        ellipse(landmark.position.x, landmark.position.y, 10, 10);
       }else {
         stroke(color(0, 0, 0));
         strokeWeight(0);
-        circleSize = 10;
+        ellipse(landmark.position.x, landmark.position.y, 10, 10);
       }
-
-      circle(
-        sketch.width - landmark.x * sketch.width,
-        landmark.y * sketch.height,
-        circleSize
-      )
     )
-
     })
-
   })
-
-
 }
