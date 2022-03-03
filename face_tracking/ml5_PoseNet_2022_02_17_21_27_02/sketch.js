@@ -14,6 +14,13 @@ let poses = [];
 let xcircle = random(width);
 let ycircle = random(height);
 
+let prevPointer = [
+  [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}],
+  [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}]
+]
+
+let fingertips = [8, 12, 16, 20]
+
 
 function setup() {
   createCanvas(640, 480);
@@ -29,6 +36,19 @@ function setup() {
   });
   // Hide the video element, and just show the canvas
   video.hide();
+
+  colorMap = [
+    [color(0, 0, 0), color(255, 0, 255), color(0, 0, 255), color(255, 255, 255)],
+    [color(255, 0, 0), color(0, 255, 0), color(0, 0, 255), color(255, 255, 0)]
+  ]
+
+  handsfree = new Handsfree({hands: {
+    enabled: true,
+    maxHands: 2,
+    }
+  })
+
+  //handsfree.start();
 }
 
 function modelReady() {
@@ -40,23 +60,13 @@ function draw() {
   image(video, 0, 0, width, height);
 
   //ellipse(width/2, height/2, 30, 30);
-
-  /*for (var x = 0; x < width; x += width / 10) {
-		for (var y = 0; y < height; y += height / 10) {
-			stroke(0);
-			strokeWeight(1);
-			line(x, 0, x, height);
-			line(0, y, width, y);
-		}
-	}*/
-
   //ellipse(xcircle, ycircle, 50, 50);
 
   // We can call both functions to draw all keypoints and the skeletons
   drawKeypoints();
   drawSkeleton();
   drawGrid();
-
+  drawHands();
 }
 
 // A function to draw ellipses over the detected keypoints
@@ -104,8 +114,47 @@ function drawGrid(){
 			line(0, y, width, y);
       //ellipse(xcircle, ycircle, 20, 20);
 		}
-
 	}
-
   //ellipse(random(k()), random(k*height), 50, 50);
+}
+
+
+function drawHands(){
+  const hands = handsfree.data?.hands
+
+  hands.landmarks.forEach((hand, handIndex) => {
+    hand.forEach((landmark, landmarkIndex) => {
+      if(colorMap[handIndex]{
+        switch(landmarkIndex){
+          case 8: fill(colorMap[handIndex][0]); break
+          case 12: fill(colorMap[handIndex][1]); break
+          case 16: fill(colorMap[handIndex][2]); break
+          case 20: fill(colorMap[handIndex][3]); break
+          default:
+            fill(color(255, 255, 255))
+        }
+
+      }
+      if(handIndex == 0 && landmarkIndex == 8){
+        stroke(color(255, 255, 255));
+        strokeWeight(5);
+        circleSize = 40;
+      }else {
+        stroke(color(0, 0, 0));
+        strokeWeight(0);
+        circleSize = 10;
+      }
+
+      circle(
+        sketch.width - landmark.x * sketch.width,
+        landmark.y * sketch.height,
+        circleSize
+      )
+    )
+
+    })
+
+  })
+
+
 }
