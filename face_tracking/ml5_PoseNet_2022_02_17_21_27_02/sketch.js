@@ -38,14 +38,14 @@ function draw() {
   background(0);
   image(video, 0, 0, width, height);
 
-  for (var x = 0; x < width; x += width / 10) {
+  /*for (var x = 0; x < width; x += width / 10) {
 		for (var y = 0; y < height; y += height / 10) {
 			stroke(0);
 			strokeWeight(1);
 			line(x, 0, x, height);
 			line(0, y, width, y);
 		}
-	}
+	}*/
 
   //ellipse(xcircle, ycircle, 50, 50);
 
@@ -93,6 +93,15 @@ function drawSkeleton() {
 
 function drawCircles(){
   //noStroke();
-  ellipse(xcircle, ycircle, 50, 50);
+  for (var x = 0; x < width; x += width / 10) {
+		for (var y = 0; y < height; y += height / 10) {
+			stroke(0);
+			strokeWeight(1);
+			line(x, 0, x, height);
+			line(0, y, width, y);
+		}
+    ellipse(xcircle, ycircle, 50, 50);
+	}
+
   //ellipse(random(k()), random(k*height), 50, 50);
 }
