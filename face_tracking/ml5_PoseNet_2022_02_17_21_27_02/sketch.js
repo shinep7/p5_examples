@@ -14,6 +14,7 @@ let poses = [];
 let xcircle = random(width);
 let ycircle = random(height);
 
+
 function setup() {
   createCanvas(640, 480);
   video = createCapture(VIDEO);
@@ -38,7 +39,7 @@ function draw() {
   background(0);
   image(video, 0, 0, width, height);
 
-  ellipse(width/2, height/2, 30, 30);
+  //ellipse(width/2, height/2, 30, 30);
 
   /*for (var x = 0; x < width; x += width / 10) {
 		for (var y = 0; y < height; y += height / 10) {
@@ -54,7 +55,7 @@ function draw() {
   // We can call both functions to draw all keypoints and the skeletons
   drawKeypoints();
   drawSkeleton();
-  drawCircles();
+  drawGrid();
 
 }
 
@@ -93,7 +94,7 @@ function drawSkeleton() {
 }
 
 
-function drawCircles(){
+function drawGrid(){
   //noStroke();
   for (var x = 0; x < width; x += width / 10) {
 		for (var y = 0; y < height; y += height / 10) {
