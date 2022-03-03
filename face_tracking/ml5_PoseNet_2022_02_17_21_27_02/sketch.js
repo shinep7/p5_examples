@@ -93,6 +93,6 @@ function drawSkeleton() {
 
 function drawCircles(){
   //noStroke();
-  //ellipse(xcircle, ycircle, 50, 50);
-    //ellipse(random(k()), random(k*height), 50, 50);
+  ellipse(xcircle, ycircle, 50, 50);
+  //ellipse(random(k()), random(k*height), 50, 50);
 }
