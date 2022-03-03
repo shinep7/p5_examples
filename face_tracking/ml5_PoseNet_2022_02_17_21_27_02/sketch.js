@@ -38,6 +38,8 @@ function draw() {
   background(0);
   image(video, 0, 0, width, height);
 
+  ellipse(width/2, height/2, 30, 30);
+
   /*for (var x = 0; x < width; x += width / 10) {
 		for (var y = 0; y < height; y += height / 10) {
 			stroke(0);
@@ -99,7 +101,7 @@ function drawCircles(){
 			strokeWeight(1);
 			line(x, 0, x, height);
 			line(0, y, width, y);
-      ellipse(xcircle, ycircle, 20, 20);
+      //ellipse(xcircle, ycircle, 20, 20);
 		}
 
 	}
