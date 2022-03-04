@@ -48,7 +48,7 @@ function setup() {
     }
   })
 
-  handsfree.start();
+//  handsfree.start();
 }
 
 function modelReady() {
