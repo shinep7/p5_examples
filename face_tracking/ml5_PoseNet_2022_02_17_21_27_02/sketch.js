@@ -40,24 +40,14 @@ function setup() {
   // Hide the video element, and just show the canvas
   video.hide();
 
-
-
-  const options = {
-    maxContinuousChecks: Infinity,
-    detectionConfidence: 0.8,
-    scoreThreshold: 0.75,
-    iouTreshold: 0.3,
-  }
-
-  handpose = ml5.handpose(video, options, modelReady);
-//  handsfree.start();
+  handpose = ml5.handpose(video, modelReady);
+  handpose.on ('hand', function(results){
+    detections = results;
+  })
 }
 
 function modelReady() {
   select('#status').html('Model Loaded');
-  handpose.on('predict', results => {
-    detections = results;
-  });
 }
 
 function draw() {
