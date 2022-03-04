@@ -26,7 +26,7 @@ let fingertips = [8, 12, 16, 20]
 
 
 function setup() {
-  createCanvas(640, 480);
+  createCanvas(640, 480, WEBGL);
   video = createCapture(VIDEO);
   video.size(width, height);
 
@@ -65,6 +65,8 @@ function modelReady() {
 function draw() {
   background(0);
   image(video, 0, 0, width, height);
+
+  translate(-width/2, -height/2);
 
   //ellipse(width/2, height/2, 30, 30);
   //ellipse(xcircle, ycircle, 50, 50);
@@ -148,7 +150,7 @@ function drawLandmarks(indexArray, hue){
     for(let j = indexArray[0]; j < indexArray[1]; j++){
       let x = detections[i].landmarks[j][0];
       let y = detections[i].landmarks[j][1];
-      //let z = detections[i].landmarks[j][2];
+      let z = detections[i].landmarks[j][2];
       stroke(hue, 40, 255);
       point(x, y);
     }
@@ -162,13 +164,13 @@ function drawLines(index){
     for(let j = 0; j < index.length - 1; j++){
       let x = detections[i].landmarks[j][0];
       let y = detections[i].landmarks[j][1];
-      //let z = detections[i].landmarks[j][2];
+      let z = detections[i].landmarks[j][2];
 
       let x1 = detections[i].landmarks[j+1][0];
       let y1 = detections[i].landmarks[j+1][1];
-      //let z1 = detections[i].landmarks[j+1][2];
+      let z1 = detections[i].landmarks[j+1][2];
 
-      line(x, y, x1, y1);
+      line(x, y, z, x1, y1, z1);
     }
   }
 }
