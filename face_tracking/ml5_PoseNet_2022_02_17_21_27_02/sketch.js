@@ -50,7 +50,6 @@ function setup() {
   }
 
   handpose = ml5.handpose(video, options, modelReady);
-  colorMode(HSB);
 //  handsfree.start();
 }
 
@@ -58,7 +57,6 @@ function modelReady() {
   select('#status').html('Model Loaded');
   handpose.on('predict', results => {
     detections = results;
-
   });
 }
 
