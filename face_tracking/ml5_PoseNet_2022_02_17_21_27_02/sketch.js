@@ -63,7 +63,7 @@ function modelReady() {
 }
 
 function draw() {
-  background(0);
+  background(255);
   image(video, 0, 0, width, height);
 
   translate(-width/2, -height/2);
