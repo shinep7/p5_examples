@@ -33,6 +33,7 @@ function setup() {
   video.hide();
 
   handpose = ml5.handpose(video, modelReady);
+  
   handpose.on('hand', function(results){
     detections = results;
   });
