@@ -14,6 +14,9 @@ let poses = [];
 let xcircle = random(width);
 let ycircle = random(height);
 
+let handpose;
+let detections = [];
+
 let prevPointer = [
   [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}],
   [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}]
@@ -37,22 +40,26 @@ function setup() {
   // Hide the video element, and just show the canvas
   video.hide();
 
-  colorMap = [
-    [color(0, 0, 0), color(255, 0, 255), color(0, 0, 255), color(255, 255, 255)],
-    [color(255, 0, 0), color(0, 255, 0), color(0, 0, 255), color(255, 255, 0)]
-  ]
 
-  handsfree = new Handsfree({hands: {
-    enabled: true,
-    maxHands: 2,
-    }
-  })
 
+  const options = {
+    maxContinuousChecks: Infinity,
+    detectionConfidence: 0.8,
+    scoreThreshold: 0.75,
+    iouTreshold: 0.3,
+  }
+
+  handpose = ml5.handpose(video, options, modelReady);
+  colorMode(HSB);
 //  handsfree.start();
 }
 
 function modelReady() {
   select('#status').html('Model Loaded');
+  handpose.on('predict', results => {
+    detections = results;
+
+  });
 }
 
 function draw() {
@@ -62,11 +69,27 @@ function draw() {
   //ellipse(width/2, height/2, 30, 30);
   //ellipse(xcircle, ycircle, 50, 50);
 
+  if(detections.length > 0){
+    drawLines([0, 5, 9, 13, 17, 0]);
+    drawLines([0, 1, 2, 3, 4]);
+    drawLines([5, 6, 7, 8]);
+    drawLines([9, 10, 11, 12]);
+    drawLines([13, 14, 15, 16]);
+    drawLines([17, 18, 19, 20]);
+
+    drawLandmarks([0, 1], 0);
+    drawLandmarks([1, 5], 60);
+    drawLandmarks([5, 9], 120);
+    drawLandmarks([9, 13], 180);
+    drawLandmarks([13, 17], 240);
+    drawLandmarks([17, 21], 300);
+  }
+
   // We can call both functions to draw all keypoints and the skeletons
   drawKeypoints();
   drawSkeleton();
   drawGrid();
-  drawHands();
+  //drawHands();
 }
 
 // A function to draw ellipses over the detected keypoints
@@ -118,32 +141,34 @@ function drawGrid(){
   //ellipse(random(k()), random(k*height), 50, 50);
 }
 
+function drawLandmarks(indexArray, hue){
+  noFill();
+  strokeWeight(10);
+  for(let i = 0; i < detections.length; i++){
+    for(let j = indexArray[0]; j < indexArray[1]; j++){
+      let x = detections[i].landmarks[j][0];
+      let y = detections[i].landmarks[j][1];
+      //let z = detections[i].landmarks[j][2];
+      stroke(hue, 40, 255);
+      point(x, y);
+    }
+  }
+}
 
-function drawHands(){
-  const hands = handsfree.data.hands
+function drawLines(index){
+  stroke(0, 0, 255);
+  strokeWeight(3);
+  for(let i = 0; i < detections.length; i++){
+    for(let j = 0; j < index.length - 1; j++){
+      let x = detections[i].landmarks[j][0];
+      let y = detections[i].landmarks[j][1];
+      //let z = detections[i].landmarks[j][2];
 
-  hands.landmarks.forEach((hand, handIndex) => {
-    hand.forEach((landmark, landmarkIndex) => {
-      if(colorMap[handIndex]{
-        switch(landmarkIndex){
-          case 8: fill(colorMap[handIndex][0]); break
-          case 12: fill(colorMap[handIndex][1]); break
-          case 16: fill(colorMap[handIndex][2]); break
-          case 20: fill(colorMap[handIndex][3]); break
-          default:
-            fill(color(255, 255, 255))
-        }
-      }
-      if(handIndex == 0 && landmarkIndex == 8){
-        stroke(color(255, 255, 255));
-        strokeWeight(5);
-        ellipse(landmark.position.x, landmark.position.y, 10, 10);
-      }else {
-        stroke(color(0, 0, 0));
-        strokeWeight(0);
-        ellipse(landmark.position.x, landmark.position.y, 10, 10);
-      }
-    )
-    })
-  })
+      let x1 = detections[i].landmarks[j+1][0];
+      let y1 = detections[i].landmarks[j+1][1];
+      //let z1 = detections[i].landmarks[j+1][2];
+
+      line(x, y, x1, y1);
+    }
+  }
 }
